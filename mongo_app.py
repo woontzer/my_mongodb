@@ -8,8 +8,8 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 
 
-import mongo_app_ui
-import mongo_app_addUser_ui
+from ui import mongo_app_ui
+from ui import mongo_app_addUser_ui
 
 class MyTableModel(QtCore.QAbstractTableModel):
     def __init__(self, parent, mymongo, header, *args):
