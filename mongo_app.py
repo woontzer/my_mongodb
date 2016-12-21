@@ -35,18 +35,6 @@ class MyTableModel(QtCore.QAbstractTableModel):
     def setData(self, index, value, role=QtCore.Qt.EditRole):
         if index.isValid():
             if role == QtCore.Qt.EditRole:
-                # node = index.internalPointer()
-                # node.setName(value)
-                # print index
-                # print dir(index)
-                # print 8888888
-                # print dir(value)
-                # x = value.toPyObject()
-                # print type(x)
-                # print x
-                # print index.row()
-                # print index.column()
-                # print dir(index)
                 self.mymongo.set_row_column(index.row(), index.column(), value.toPyObject())
                 return True
         return False
@@ -59,15 +47,6 @@ class MyTableModel(QtCore.QAbstractTableModel):
 
     def flags(self, index):
         return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEditable
-
-    # def sort(self, col, order):
-    #     """sort table by given column number col"""
-    #     self.emit(SIGNAL("layoutAboutToBeChanged()"))
-    #     self.mylist = sorted(self.mylist,
-    #         key=operator.itemgetter(col))
-    #     if order == QtCore.Qt.DescendingOrder:
-    #         self.mylist.reverse()
-    #     self.emit(SIGNAL("layoutChanged()"))
 
 class MyMongo(QtCore.QObject):
     warning_signal = QtCore.pyqtSignal(str, str)
